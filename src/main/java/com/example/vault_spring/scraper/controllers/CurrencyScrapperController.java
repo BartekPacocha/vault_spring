@@ -1,7 +1,8 @@
 package com.example.vault_spring.scraper.controllers;
 
 import com.example.vault_spring.commons.models.Currency;
-import com.example.vault_spring.scraper.services.CurrencyScraperService;
+import com.example.vault_spring.commons.models.ExchangeCourse;
+import com.example.vault_spring.scraper.services.ExchangeCourseScraperService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +16,13 @@ import java.util.List;
 @AllArgsConstructor
 public class CurrencyScrapperController {
 
-    private final CurrencyScraperService currencyScraperService;
+    private final ExchangeCourseScraperService exchangeCourseScraperService;
 
-    @GetMapping(path = "/currencies")
+    @GetMapping(path = "/exchangeCourses")
     public String showAllCurrencies(Model model) {
-        final List<Currency> allCurrenciesToList = currencyScraperService.getAll();
-        model.addAttribute("currencies", allCurrenciesToList);
+        final List<ExchangeCourse> allCurrenciesToList = exchangeCourseScraperService.getAll();
+        model.addAttribute("exchangeCourses", allCurrenciesToList);
 
-        return "currencies";
+        return "exchangeCourses";
     }
 }

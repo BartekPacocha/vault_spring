@@ -1,6 +1,7 @@
 package com.example.vault_spring.scraper.services;
 
 import com.example.vault_spring.commons.models.Currency;
+import com.example.vault_spring.commons.models.ExchangeCourse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,21 +11,21 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @SpringBootTest
-class CurrencyScraperServiceImplTest {
+class ExchangeCourseScraperServiceImplTest {
 
-    private CurrencyScraperService currencyScraperService;
+    private ExchangeCourseScraperService exchangeCourseScraperService;
 
     @BeforeEach
     void setUp() {
-        currencyScraperService = new CurrencyScraperServiceImpl();
+        exchangeCourseScraperService = new ExchangeCourseScraperServiceImpl();
     }
 
     @Test
     public void shouldGetAllCurrenciesWhenGetAllCall() {
         // when
-        final List<Currency> currencies = currencyScraperService.getAll();
+        final List<ExchangeCourse> exchangeCourses = exchangeCourseScraperService.getAll();
 
         // then
-        assertFalse(currencies.isEmpty());
+        assertFalse(exchangeCourses.isEmpty());
     }
 }

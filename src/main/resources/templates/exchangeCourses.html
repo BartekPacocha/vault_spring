@@ -60,10 +60,10 @@ table td {
 }
 </style>
 <body>
-    <div th:switch="${currencies}">
-        <h2 th:case="null">No users yet!</h2>
+    <div th:switch="${exchangeCourses}">
+        <h2 th:case="null">No exchange courses yet!</h2>
         <div th:case="*">
-            <h2>Currencies</h2>
+            <h2>Exchange Courses</h2>
             <table>
                 <thead>
                 <tr>
@@ -76,11 +76,11 @@ table td {
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="currency : ${currencies}">
-                    <td th:text="${currency.name}"></td>
-                    <td th:text="${currency.currencyType}"></td>
-                    <td th:text="${currency.buyPrice}"></td>
-                    <td th:text="${currency.sellPrice}"></td>
+                <tr th:each="exchangeCourse : ${exchangeCourses}">
+                    <td th:text="${exchangeCourse.currency.name}"></td>
+                    <td th:text="${exchangeCourse.currency.currencyType}"></td>
+                    <td th:text="${exchangeCourse.buyPrice}"></td>
+                    <td th:text="${exchangeCourse.sellPrice}"></td>
     <!--                <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>-->
     <!--                <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>-->
                 </tr>
