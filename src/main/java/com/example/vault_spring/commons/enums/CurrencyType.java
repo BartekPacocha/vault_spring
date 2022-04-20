@@ -7,14 +7,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+// TODO: change to lookup table to be able to add new currency
 public enum CurrencyType {
 
-    EUR(1),
-    USD(2),
-    GPB(3),
-    HUF(11);
+    EUR(1, "Euro"),
+    USD(2, "Dolar"),
+    GPB(3, "Funt Brytyjski"),
+    HUF(11, "Forint");
 
     private Integer rowNumber;
+    private String name;
 
     public static CurrencyType typeOf(final String type) {
         for (CurrencyType currencyType : CurrencyType.values()) {

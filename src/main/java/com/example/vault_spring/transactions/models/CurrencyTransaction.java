@@ -37,5 +37,4 @@ public class CurrencyTransaction {
 
     @Column
     private BigDecimal transactionSum;
-
 }
