@@ -1,14 +1,15 @@
-package com.example.vault_spring.transactions.models;
+package com.example.vault_spring.currency_transactions.models;
 
-import com.example.vault_spring.commons.models.Currency;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class CurrencyTransactionCreateForm {
 
     private String transactionDate;

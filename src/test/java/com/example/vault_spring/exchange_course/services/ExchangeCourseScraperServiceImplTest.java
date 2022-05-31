@@ -1,6 +1,5 @@
-package com.example.vault_spring.scraper.services;
+package com.example.vault_spring.exchange_course.services;
 
-import com.example.vault_spring.commons.models.Currency;
 import com.example.vault_spring.commons.models.ExchangeCourse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,7 @@ class ExchangeCourseScraperServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        exchangeCourseScraperService = new ExchangeCourseScraperServiceImpl();
+        // exchangeCourseScraperService = new ExchangeCourseScraperServiceImpl();
     }
 
     @Test

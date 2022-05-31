@@ -1,8 +1,9 @@
-package com.example.vault_spring.scraper.services;
+package com.example.vault_spring.exchange_course.services;
 
 import com.example.vault_spring.commons.enums.CurrencyType;
-import com.example.vault_spring.commons.models.Currency;
+import com.example.vault_spring.commons.models.CurrencyData;
 import com.example.vault_spring.commons.models.ExchangeCourse;
+import lombok.AllArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,8 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static java.time.LocalDate.now;
+
 @Service
+@AllArgsConstructor
 public class ExchangeCourseScraperServiceImpl implements ExchangeCourseScraperService {
+
+    private final ExchangeCourseInMemoryService exchangeCourseInMemoryService;
 
     public static final String URL = "http://www.kantorwojnicz.pl/";
     public static final String TABLE_TAG = "table";
@@ -48,9 +54,11 @@ public class ExchangeCourseScraperServiceImpl implements ExchangeCourseScraperSe
         return exchangeCourses;
     }
 
-    @Scheduled(cron = "0 0/5 * * * ?")
+    @Scheduled(cron = "0/15 * * * * *")
     public void schedulerTest() {
-        System.out.println("schedulerTest " + LocalDateTime.now());
+        List<ExchangeCourse> exchangeCourses = getAll();
+
+        exchangeCourses.forEach(exchangeCourseInMemoryService::subscribeExchangeCourse);
     }
 
     private Optional<ExchangeCourse> downloadExchangeCourse(final CurrencyType currencyType) {
@@ -68,7 +76,7 @@ public class ExchangeCourseScraperServiceImpl implements ExchangeCourseScraperSe
             final Element strongName = tdName.getElementsByTag(STRONG_TAG).get(0);
             final String strValName = Jsoup.parse(strongName.toString()).text().replaceAll(COMMA, DOT);
 
-            final Currency currency = Currency.builder()
+            final CurrencyData currency = CurrencyData.builder()
                     .currencyType(currencyType)
                     .name(strValName)
                     .build();
@@ -77,6 +85,7 @@ public class ExchangeCourseScraperServiceImpl implements ExchangeCourseScraperSe
                     .currency(currency)
                     .buyPrice(valueBuy)
                     .sellPrice(valueSell)
+                    .date(now())
                     .build();
 
             return Optional.of(exchangeCourse);

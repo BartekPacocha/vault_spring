@@ -1,25 +1,19 @@
 package com.example.vault_spring.vault.models;
 
-import com.example.vault_spring.commons.models.Currency;
-import com.example.vault_spring.commons.models.ExchangeCourse;
-import lombok.AllArgsConstructor;
+import com.example.vault_spring.commons.models.CurrencyData;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.persistence.*;
+import java.math.BigDecimal;
 
-@Entity
 @Builder
 @Getter
-@AllArgsConstructor
 public class VaultData {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private long id;
+    private CurrencyData currency;
+    private Double currencyAmount;
+    private BigDecimal currencyTransactionSum;
+    private BigDecimal currencySellPrice;
+    private BigDecimal transactionDifference;
 
-    @Column
-    @Embedded
-    private ExchangeCourse exchangeCourse;
 }

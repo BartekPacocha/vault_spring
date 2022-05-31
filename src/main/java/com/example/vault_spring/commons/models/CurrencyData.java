@@ -15,13 +15,13 @@ import static com.example.vault_spring.commons.enums.CurrencyType.EUR;
 @ToString
 @Getter
 @Embeddable
-public class Currency {
+public class CurrencyData {
 
     @Enumerated(EnumType.STRING)
     private CurrencyType currencyType;
     private String name;
 
-    public static Currency prototype() {
+    public static CurrencyData prototype() {
         return builder()
                 .currencyType(EUR)
                 .name("Euro")

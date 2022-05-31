@@ -1,4 +1,4 @@
-package com.example.vault_spring.scraper.services;
+package com.example.vault_spring.exchange_course.services;
 
 import com.example.vault_spring.commons.enums.CurrencyType;
 import com.example.vault_spring.commons.models.ExchangeCourse;

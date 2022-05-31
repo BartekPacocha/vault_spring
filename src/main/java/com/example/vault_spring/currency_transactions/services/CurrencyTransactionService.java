@@ -1,7 +1,7 @@
-package com.example.vault_spring.transactions.services;
+package com.example.vault_spring.currency_transactions.services;
 
-import com.example.vault_spring.transactions.models.CurrencyTransaction;
-import com.example.vault_spring.transactions.models.CurrencyTransactionCreateForm;
+import com.example.vault_spring.currency_transactions.models.CurrencyTransaction;
+import com.example.vault_spring.currency_transactions.models.CurrencyTransactionCreateForm;
 
 import java.util.List;
 

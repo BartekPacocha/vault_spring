@@ -1,8 +1,7 @@
-package com.example.vault_spring.scraper.controllers;
+package com.example.vault_spring.exchange_course.controllers;
 
-import com.example.vault_spring.commons.models.Currency;
 import com.example.vault_spring.commons.models.ExchangeCourse;
-import com.example.vault_spring.scraper.services.ExchangeCourseScraperService;
+import com.example.vault_spring.exchange_course.services.ExchangeCourseScraperService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

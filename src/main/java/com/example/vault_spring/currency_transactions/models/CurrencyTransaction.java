@@ -1,6 +1,6 @@
-package com.example.vault_spring.transactions.models;
+package com.example.vault_spring.currency_transactions.models;
 
-import com.example.vault_spring.commons.models.Currency;
+import com.example.vault_spring.commons.models.CurrencyData;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,7 +33,7 @@ public class CurrencyTransaction {
 
     @Column
     @Embedded
-    private Currency currency;
+    private CurrencyData currency;
 
     @Column
     private BigDecimal transactionSum;

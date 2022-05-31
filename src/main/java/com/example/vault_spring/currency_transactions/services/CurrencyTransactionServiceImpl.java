@@ -1,10 +1,10 @@
-package com.example.vault_spring.transactions.services;
+package com.example.vault_spring.currency_transactions.services;
 
 import com.example.vault_spring.commons.enums.CurrencyType;
-import com.example.vault_spring.commons.models.Currency;
-import com.example.vault_spring.transactions.models.CurrencyTransaction;
-import com.example.vault_spring.transactions.models.CurrencyTransactionCreateForm;
-import com.example.vault_spring.transactions.repositories.CurrencyTransactionRepository;
+import com.example.vault_spring.commons.models.CurrencyData;
+import com.example.vault_spring.currency_transactions.models.CurrencyTransaction;
+import com.example.vault_spring.currency_transactions.models.CurrencyTransactionCreateForm;
+import com.example.vault_spring.currency_transactions.repositories.CurrencyTransactionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -37,12 +37,12 @@ public class CurrencyTransactionServiceImpl implements CurrencyTransactionServic
         return repository.save(currencyTransaction);
     }
 
-    private Currency convertCurrencyFromCreateForm(final CurrencyTransactionCreateForm createForm) {
+    private CurrencyData convertCurrencyFromCreateForm(final CurrencyTransactionCreateForm createForm) {
         String currency = createForm.getCurrency();
 
         CurrencyType currencyType = CurrencyType.typeOf(currency);
 
-        return Currency.builder()
+        return CurrencyData.builder()
                 .currencyType(currencyType)
                 .name(currencyType.getName())
                 .build();
