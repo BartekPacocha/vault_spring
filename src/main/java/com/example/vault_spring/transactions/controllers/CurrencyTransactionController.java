@@ -1,7 +1,6 @@
 package com.example.vault_spring.transactions.controllers;
 
 import com.example.vault_spring.commons.enums.CurrencyType;
-import com.example.vault_spring.commons.models.Currency;
 import com.example.vault_spring.transactions.models.CurrencyTransaction;
 import com.example.vault_spring.transactions.models.CurrencyTransactionCreateForm;
 import com.example.vault_spring.transactions.services.CurrencyTransactionService;
@@ -14,8 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/")
@@ -28,7 +27,14 @@ public class CurrencyTransactionController {
     public String getAllTransactions(Model model) {
         List<CurrencyTransaction> all = service.getAll();
 
+        // transactionSum
+        BigDecimal reduce = all.stream()
+                .map(CurrencyTransaction::getTransactionSum)
+                .reduce(BigDecimal.valueOf(0), BigDecimal::add);
+
+
         model.addAttribute("transactions", all);
+        model.addAttribute("transactionsSum", reduce);
 
         return "transactions";
     }
