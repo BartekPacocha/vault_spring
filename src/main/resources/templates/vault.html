@@ -4,8 +4,105 @@
     <meta charset="UTF-8">
     <title>Vault</title>
 </head>
+<style>
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    /* Center tables for demo */
+table {
+  margin: 0 auto;
+}
+
+/* Default Table Style */
+table {
+  color: #333;
+  background: white;
+  border: 1px solid grey;
+  font-size: 12pt;
+  border-collapse: collapse;
+  width:50%;
+}
+table thead th,
+table tfoot th {
+  color: #777;
+  background: rgba(0,0,0,.1);
+}
+table caption {
+  padding:.5em;
+}
+table th,
+table td {
+  padding: .5em;
+  border: 1px solid lightgrey;
+}
+/* Zebra Table Style */
+[data-table-theme*=zebra] tbody tr:nth-of-type(odd) {
+  background: rgba(0,0,0,.05);
+}
+[data-table-theme*=zebra][data-table-theme*=dark] tbody tr:nth-of-type(odd) {
+  background: rgba(255,255,255,.05);
+}
+/* Dark Style */
+[data-table-theme*=dark] {
+  color: #ddd;
+  background: #333;
+  font-size: 12pt;
+  border-collapse: collapse;
+}
+[data-table-theme*=dark] thead th,
+[data-table-theme*=dark] tfoot th {
+  color: #aaa;
+  background: rgba(0255,255,255,.15);
+}
+[data-table-theme*=dark] caption {
+  padding:.5em;
+}
+[data-table-theme*=dark] th,
+[data-table-theme*=dark] td {
+  padding: .5em;
+  border: 1px solid grey;
+}
+</style>
 <body>
-<p><a href="/">Menu</a></p>
-<p><a href="/exchangeCourses">exchangeCourses</a></p>
+<div th:switch="${vaultData}">
+    <h2 th:case="null">No vaultData yet!</h2>
+    <div th:case="*">
+        <h2>Vault Data</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>currency</th>
+                <th>currencyAmount</th>
+                <th>currencyTransactionSum</th>
+                <th>currencySellPrice</th>
+                <th>transactionDifference</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vaultData : ${vaultData}">
+                <td th:text="${vaultData.currency.name}"></td>
+                <td th:text="${vaultData.currencyAmount}"></td>
+                <td th:text="${vaultData.currencyTransactionSum}"></td>
+                <td th:text="${vaultData.currencySellPrice}"></td>
+                <td th:text="${vaultData.transactionDifference}"></td>
+                <!--                <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>-->
+                <!--                <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>-->
+            </tr>
+            <tr>
+                <td th:text="SUM"></td>
+                <td th:text="${vaultDataSum.currencyAmountSum}"></td>
+                <td th:text="${vaultDataSum.currencyTransactionSum}"></td>
+                <td></td>
+                <td th:text="${vaultDataSum.transactionDifferenceSum}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/">Menu</a></p>
+    <p><a href="/transactions/add">add</a></p>
+</div>
+
 </body>
 </html>

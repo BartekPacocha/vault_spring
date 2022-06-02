@@ -3,17 +3,14 @@ package com.example.vault_spring.exchange_course.services;
 import com.example.vault_spring.commons.enums.CurrencyType;
 import com.example.vault_spring.commons.models.CurrencyData;
 import com.example.vault_spring.commons.models.ExchangeCourse;
-import lombok.AllArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,10 +18,7 @@ import java.util.Optional;
 import static java.time.LocalDate.now;
 
 @Service
-@AllArgsConstructor
 public class ExchangeCourseScraperServiceImpl implements ExchangeCourseScraperService {
-
-    private final ExchangeCourseInMemoryService exchangeCourseInMemoryService;
 
     public static final String URL = "http://www.kantorwojnicz.pl/";
     public static final String TABLE_TAG = "table";
@@ -52,13 +46,6 @@ public class ExchangeCourseScraperServiceImpl implements ExchangeCourseScraperSe
         }
 
         return exchangeCourses;
-    }
-
-    @Scheduled(cron = "0/15 * * * * *")
-    public void schedulerTest() {
-        List<ExchangeCourse> exchangeCourses = getAll();
-
-        exchangeCourses.forEach(exchangeCourseInMemoryService::subscribeExchangeCourse);
     }
 
     private Optional<ExchangeCourse> downloadExchangeCourse(final CurrencyType currencyType) {

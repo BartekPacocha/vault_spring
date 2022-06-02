@@ -8,7 +8,6 @@ import java.util.List;
 public interface ExchangeCourseScraperService {
 
     ExchangeCourse getExchangeCourse(final CurrencyType currencyType);
-
     List<ExchangeCourse> getAll();
 
 }

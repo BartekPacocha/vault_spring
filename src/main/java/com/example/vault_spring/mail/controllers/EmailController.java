@@ -27,7 +27,7 @@ public class EmailController {
         context.setVariable("header", "Header");
         context.setVariable("title", "Title");
         context.setVariable("description", "Description");
-        String body = templateEngine.process("template", context);
+        String body = templateEngine.process("email_template", context);
         emailSender.sendEmail("bartekpacocha@gmail.com", "Test mail", body);
 
         return "email_template";

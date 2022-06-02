@@ -38,8 +38,6 @@ public class CurrencyTransactionController {
 
     @GetMapping("/transactions/add")
     public String showAddTransactions(Model model) {
-        // CurrencyTransaction transaction = new CurrencyTransaction();
-
         CurrencyType[] currencyTypes = CurrencyType.values();
 
         model.addAttribute("transaction", new CurrencyTransactionCreateForm());
