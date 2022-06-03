@@ -2,7 +2,7 @@ package com.example.vault_spring.exchange_course.services;
 
 import com.example.vault_spring.commons.enums.CurrencyType;
 import com.example.vault_spring.commons.models.CurrencyData;
-import com.example.vault_spring.commons.models.ExchangeCourse;
+import com.example.vault_spring.exchange_course.models.ExchangeCourse;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -37,7 +37,7 @@ public class ExchangeCourseScraperServiceImpl implements ExchangeCourseScraperSe
     }
 
     @Override
-    public List<ExchangeCourse> getAll() {
+    public List<ExchangeCourse> downloadAll() {
         List<ExchangeCourse> exchangeCourses = new ArrayList<>();
 
         for (CurrencyType type : CurrencyType.values()) {

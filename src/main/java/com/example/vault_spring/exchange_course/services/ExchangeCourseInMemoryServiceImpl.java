@@ -1,8 +1,7 @@
 package com.example.vault_spring.exchange_course.services;
 
-import com.example.vault_spring.commons.enums.CurrencyType;
 import com.example.vault_spring.commons.models.CurrencyData;
-import com.example.vault_spring.commons.models.ExchangeCourse;
+import com.example.vault_spring.exchange_course.models.ExchangeCourse;
 import lombok.AllArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -41,7 +40,7 @@ public class ExchangeCourseInMemoryServiceImpl implements ExchangeCourseInMemory
     }
 
     private void subscribeExchangeCourses() {
-        List<ExchangeCourse> exchangeCourses = exchangeCourseScraperService.getAll();
+        List<ExchangeCourse> exchangeCourses = exchangeCourseScraperService.downloadAll();
 
         exchangeCourses.forEach(this::subscribeExchangeCourse);
     }

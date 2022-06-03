@@ -1,6 +1,6 @@
 package com.example.vault_spring.exchange_course.services;
 
-import com.example.vault_spring.commons.models.ExchangeCourse;
+import com.example.vault_spring.exchange_course.models.ExchangeCourse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +22,7 @@ class ExchangeCourseScraperServiceImplTest {
     @Test
     public void shouldGetAllCurrenciesWhenGetAllCall() {
         // when
-        final List<ExchangeCourse> exchangeCourses = exchangeCourseScraperService.getAll();
+        final List<ExchangeCourse> exchangeCourses = exchangeCourseScraperService.downloadAll();
 
         // then
         assertFalse(exchangeCourses.isEmpty());

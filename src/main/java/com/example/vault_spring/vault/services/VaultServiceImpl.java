@@ -2,7 +2,7 @@ package com.example.vault_spring.vault.services;
 
 import com.example.vault_spring.commons.enums.CurrencyType;
 import com.example.vault_spring.commons.models.CurrencyData;
-import com.example.vault_spring.commons.models.ExchangeCourse;
+import com.example.vault_spring.exchange_course.models.ExchangeCourse;
 import com.example.vault_spring.currency_transactions.models.CurrencyTransaction;
 import com.example.vault_spring.currency_transactions.services.CurrencyTransactionService;
 import com.example.vault_spring.exchange_course.services.ExchangeCourseInMemoryService;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static com.example.vault_spring.commons.CronConstants.CRON_EVERYDAY_AT_16_AM;
