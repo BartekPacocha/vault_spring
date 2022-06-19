@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import static com.example.vault_spring.exchange_course.models.ExchangeCourse.toEntity;
+import static java.util.stream.Collectors.toList;
 
 @Service
 @AllArgsConstructor
 public class ExchangeCourseServiceImpl implements ExchangeCourseService {
 
-    private ExchangeCourseScraperService scraperService;
     private ExchangeCourseRepository repository;
 
     @Override
@@ -34,12 +34,18 @@ public class ExchangeCourseServiceImpl implements ExchangeCourseService {
 
     @Override
     public List<ExchangeCourse> getLastCourses() {
-        return null;
+        return repository.getLastCourses().stream()
+                .map(ExchangeCourse::fromEntity)
+                .collect(toList());
+
+//        return null;
     }
 
     @Override
     public List<ExchangeCourse> getAllCourses() {
-        return null;
+        return repository.findAll().stream()
+                .map(ExchangeCourse::fromEntity)
+                .collect(toList());
     }
 
     @Override

@@ -29,4 +29,13 @@ public class ExchangeCourse {
                 .build();
     }
 
+    public static ExchangeCourse fromEntity(final ExchangeCourseEntity entity) {
+        return ExchangeCourse.builder()
+                .currency(entity.getCurrency())
+                .date(entity.getDate())
+                .buyPrice(entity.getBuyPrice())
+                .sellPrice(entity.getSellPrice())
+                .build();
+    }
+
 }

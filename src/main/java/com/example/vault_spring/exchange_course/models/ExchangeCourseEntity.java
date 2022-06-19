@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "exchange_course")
 @Builder(toBuilder=true)
 @Getter
 @AllArgsConstructor
