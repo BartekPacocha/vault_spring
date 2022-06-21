@@ -1,5 +1,6 @@
 package com.example.vault_spring.exchange_course.services;
 
+import com.example.vault_spring.commons.models.CurrencyData;
 import com.example.vault_spring.exchange_course.forms.ExchangeCourseSearchForm;
 import com.example.vault_spring.exchange_course.models.ExchangeCourse;
 import com.example.vault_spring.exchange_course.models.ExchangeCourseEntity;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.example.vault_spring.exchange_course.models.ExchangeCourse.fromEntity;
 import static com.example.vault_spring.exchange_course.models.ExchangeCourse.toEntity;
 import static java.util.stream.Collectors.toList;
 
@@ -37,9 +39,13 @@ public class ExchangeCourseServiceImpl implements ExchangeCourseService {
         return repository.getLastCourses().stream()
                 .map(ExchangeCourse::fromEntity)
                 .collect(toList());
-
-//        return null;
     }
+
+    @Override
+    public ExchangeCourse getLastCurrencyCourse(final CurrencyData currency) {
+        return fromEntity(repository.getLastCurrencyCourse(currency));
+    }
+
 
     @Override
     public List<ExchangeCourse> getAllCourses() {

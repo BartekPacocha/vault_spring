@@ -24,7 +24,7 @@ public class CurrencyTransactionServiceImpl implements CurrencyTransactionServic
     }
 
     @Override
-    public CurrencyTransaction save(CurrencyTransactionCreateForm createForm) {
+    public void save(CurrencyTransactionCreateForm createForm) {
 
         CurrencyTransaction currencyTransaction = CurrencyTransaction.builder()
                 .currency(convertCurrencyFromCreateForm(createForm))
@@ -34,7 +34,7 @@ public class CurrencyTransactionServiceImpl implements CurrencyTransactionServic
                 .transactionSum(countTransactionSum(createForm))
                 .build();
 
-        return repository.save(currencyTransaction);
+        repository.save(currencyTransaction);
     }
 
     private CurrencyData convertCurrencyFromCreateForm(final CurrencyTransactionCreateForm createForm) {

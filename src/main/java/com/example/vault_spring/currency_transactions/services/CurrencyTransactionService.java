@@ -8,9 +8,6 @@ import java.util.List;
 public interface CurrencyTransactionService {
 
     List<CurrencyTransaction> getAll();
-
-    // CurrencyTransaction save(CurrencyTransaction currencyTransaction);
-
-    CurrencyTransaction save(CurrencyTransactionCreateForm createForm);
+    void save(CurrencyTransactionCreateForm createForm);
 
 }

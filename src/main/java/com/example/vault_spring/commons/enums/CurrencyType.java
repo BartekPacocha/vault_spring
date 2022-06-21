@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 public enum CurrencyType {
 
     EUR(1, "Euro"),
-    USD(2, "Dolar"),
-    GPB(3, "Funt Brytyjski"),
-    HUF(11, "Forint");
+    USD(2, "Dolar amerykański"),
+    GPB(3, "Funt brytyjski"),
+    HUF(11, "Forint węgierski");
 
     private Integer rowNumber;
     private String name;

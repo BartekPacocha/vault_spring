@@ -2,10 +2,9 @@ package com.example.vault_spring.vault.services;
 
 import com.example.vault_spring.commons.enums.CurrencyType;
 import com.example.vault_spring.commons.models.CurrencyData;
-import com.example.vault_spring.exchange_course.models.ExchangeCourse;
 import com.example.vault_spring.currency_transactions.models.CurrencyTransaction;
 import com.example.vault_spring.currency_transactions.services.CurrencyTransactionService;
-import com.example.vault_spring.exchange_course.services.ExchangeCourseInMemoryService;
+import com.example.vault_spring.exchange_course.services.ExchangeCourseService;
 import com.example.vault_spring.vault.models.VaultData;
 import com.example.vault_spring.vault.models.VaultDataSumForm;
 import lombok.AllArgsConstructor;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.example.vault_spring.commons.CronConstants.CRON_EVERYDAY_AT_16_AM;
@@ -25,7 +23,7 @@ import static java.math.BigDecimal.valueOf;
 public class VaultServiceImpl implements VaultService {
 
     private final CurrencyTransactionService currencyTransactionService;
-    private final ExchangeCourseInMemoryService exchangeCourseInMemoryService;
+    private final ExchangeCourseService exchangeCourseService;
 
     @Override
     public List<VaultData> getVaultDataWithFilter(final List<CurrencyType> currencyData) {
@@ -57,8 +55,8 @@ public class VaultServiceImpl implements VaultService {
     }
 
     @Scheduled(cron = CRON_EVERYDAY_AT_16_AM)
-    void sendEmailRaport() {
-        List<VaultData> allVaultData = getAllVaultData();
+    void sendEmailReport() {
+        // TODO List<VaultData> allVaultData = getAllVaultData();
     }
 
     private List<VaultData> getAllVaultData() {
@@ -84,13 +82,9 @@ public class VaultServiceImpl implements VaultService {
     }
 
     private BigDecimal getCurrencySellPrice(final CurrencyData currency) {
-        Optional<ExchangeCourse> exchangeCourse = exchangeCourseInMemoryService.getExchangeCourse(currency);
+        final var lastCurrencyCourse = exchangeCourseService.getLastCurrencyCourse(currency);
 
-        if (exchangeCourse.isPresent()) {
-            return exchangeCourse.get().getSellPrice();
-        }
-
-        return valueOf(0);
+        return lastCurrencyCourse.getSellPrice();
     }
 
     private BigDecimal countTransactionDifference(final BigDecimal currencySellPrice, final CurrencyTransaction currencyTransaction) {
