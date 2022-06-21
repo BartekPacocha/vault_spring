@@ -77,6 +77,7 @@ table td {
                 <th>currencyAmount</th>
                 <th>currencyTransactionSum</th>
                 <th>currencySellPrice</th>
+                <th>buyPrice</th>
                 <th>transactionDifference</th>
             </tr>
             </thead>
@@ -86,6 +87,7 @@ table td {
                 <td th:text="${vaultData.currencyAmount}"></td>
                 <td th:text="${vaultData.currencyTransactionSum}"></td>
                 <td th:text="${vaultData.currencySellPrice}"></td>
+                <td th:text="${vaultData.buyPrice}"></td>
                 <td th:text="${vaultData.transactionDifference}"></td>
                 <!--                <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>-->
                 <!--                <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>-->
@@ -94,6 +96,7 @@ table td {
                 <td th:text="SUM"></td>
                 <td th:text="${vaultDataSum.currencyAmountSum}"></td>
                 <td th:text="${vaultDataSum.currencyTransactionSum}"></td>
+                <td></td>
                 <td></td>
                 <td th:text="${vaultDataSum.transactionDifferenceSum}"></td>
             </tr>

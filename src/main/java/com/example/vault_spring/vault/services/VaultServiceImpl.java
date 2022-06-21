@@ -78,6 +78,7 @@ public class VaultServiceImpl implements VaultService {
                 .currencyTransactionSum(currencyTransaction.getTransactionSum())
                 .currencySellPrice(currencySellPrice)
                 .transactionDifference(transactionDifference)
+                .buyPrice(currencyTransaction.getCurrencyBuyPrice())
                 .build();
     }
 

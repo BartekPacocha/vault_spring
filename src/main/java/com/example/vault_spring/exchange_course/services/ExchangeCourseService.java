@@ -13,4 +13,6 @@ public interface ExchangeCourseService {
     ExchangeCourse getLastCurrencyCourse(CurrencyData currency);
     List<ExchangeCourse> getAllCourses();
     List<ExchangeCourse> searchCourses(ExchangeCourseSearchForm searchForm);
+
+    void refreshExchangeCourses();
 }

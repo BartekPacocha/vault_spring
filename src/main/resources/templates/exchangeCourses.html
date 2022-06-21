@@ -64,6 +64,7 @@ table td {
         <h2 th:case="null">No exchange courses yet!</h2>
         <div th:case="*">
             <h2>Exchange Courses</h2>
+            <h2 th:text="${courseDate}"></h2>
             <table>
                 <thead>
                 <tr>
@@ -89,5 +90,6 @@ table td {
         </div>
         <p><a href="/">Menu</a></p>
         <input onclick='javascript:window.history.back()' value='Back' type='button' />
+        <p><a href="/exchangeCourses?refresh=true">refresh</a></p>
     </div>
 </body>

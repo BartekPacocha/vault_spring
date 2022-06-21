@@ -14,6 +14,7 @@ public class VaultData {
     private Double currencyAmount;
     private BigDecimal currencyTransactionSum;
     private BigDecimal currencySellPrice;
+    private BigDecimal buyPrice;
     private BigDecimal transactionDifference;
 
 }
