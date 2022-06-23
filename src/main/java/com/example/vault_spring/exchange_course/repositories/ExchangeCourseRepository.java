@@ -19,4 +19,6 @@ public interface ExchangeCourseRepository extends JpaRepository<ExchangeCourseEn
 
     @Query("SELECT MAX(date) from exchange_course")
     LocalDate getLatestDate();
+
+    List<ExchangeCourseEntity> findByCurrency(CurrencyData currency);
 }
